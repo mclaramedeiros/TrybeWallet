@@ -5,14 +5,11 @@ const INITIAL_STATE = {
   expenses: [],
 };
 
-const wallet = (state = INITIAL_STATE, action) => {
+const Wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case 'INITIAL_STATE':
-    return action.payload;
-
   default:
     return state;
   }
 };
 
-export default wallet;
+export default Wallet;
