@@ -1,7 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchApi } from '../actions/index';
+// import Wallet from '../pages/Wallet';
 
 class Form extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      description: '',
+      moeda: 'USD',
+      value: 0,
+      tag: 'Alimentação',
+      method: 'Dinheiro',
+    };
+  }
+
   render() {
     const { value, currencies } = this.props;
     const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
@@ -18,27 +33,29 @@ class Form extends React.Component {
             value={ value }
           />
         </label>
-        <label htmlFor="">
+        <label htmlFor="descrição">
           <input
             name="descrição"
             data-testid="description-input"
             value={ value }
           />
         </label>
-        <select
-          { ...currencies.map((unit) => (
-            <option
-              key={ unit }
-              value={ unit }
-              name={ unit }
-            >
-              {unit}
-            </option>)) }
-        />
+        <label htmlFor="currencies">
+          Moeda
+          <select id="currencies">
+            { currencies.map((unit) => (
+              <option
+                key={ unit }
+                value={ unit }
+                name={ unit }
+              >
+                {unit}
+              </option>)) }
+          </select>
+        </label>
 
-        <select
-          data-testid="method-input"
-          { ...pay.map((payment) => (
+        <select data-testid="method-input">
+          { pay.map((payment) => (
             <option
               key={ payment }
               name={ payment }
@@ -47,10 +64,11 @@ class Form extends React.Component {
               {payment}
             </option>
           )) }
-        />
+        </select>
         <select
           data-testid="tag-input"
-          { ...tag.map((tagUnit) => (
+        >
+          { tag.map((tagUnit) => (
             <option
               key={ tagUnit }
               name={ tagUnit }
@@ -59,16 +77,23 @@ class Form extends React.Component {
               {tagUnit}
             </option>
           )) }
-        />
+        </select>
 
       </form>
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  fetchToApi: () => dispatch(fetchApi()),
+});
+
+const mapStateToProps = (state) => ({
+  currencies: state.wallet.currencies,
+});
 
 Form.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
   value: PropTypes.string.isRequired,
 };
 
-export default Form;
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

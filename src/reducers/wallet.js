@@ -1,5 +1,5 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { ENDPOINT_API } from '../actions';
+import { ENDPOINT_API, SENDEXPENCES } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -11,6 +11,11 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       currencies: action.currencies,
     };
+  case SENDEXPENCES:
+    return {
+      expences: state.expences,
+    };
+
   default:
     return state;
   }

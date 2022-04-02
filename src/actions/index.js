@@ -3,17 +3,29 @@
 
 export const ENDPOINT_API = 'API';
 export const LOGIN = 'LOGIN';
+export const EXPENCES = 'EXPENCES';
+export const FAILEDREQUEST = 'FAILEDREQUEST';
 
-export const login = (payload) => ({ type: LOGIN, payload });
+export const login = (email) => ({ type: LOGIN, email });
 export const endpointAPI = (currencies) => ({
   type: ENDPOINT_API,
   currencies,
 });
+export const SENDEXPENCES = (payload) => ({
+  type: EXPENCES,
+  payload,
+});
+
+const failedRequest = (error) => ({ type: FAILEDREQUEST, error });
 
 export const fetchApi = () => async (dispatch) => {
-  const url = 'https://economia.awesomeapi.com.br/json/all';
-  const result = await fetch(url);
-  const data = await result.json();
-  const selectedKeys = Object.keys(data).filter((callback) => callback !== 'USDT');
-  dispatch(endpointAPI(selectedKeys));
+  try {
+    const url = 'https://economia.awesomeapi.com.br/json/all';
+    const result = await fetch(url);
+    const data = await result.json();
+    const selectedKeys = Object.keys(data).filter((callback) => callback !== 'USDT');
+    dispatch(endpointAPI(selectedKeys));
+  } catch (error) {
+    dispatch(failedRequest(error));
+  }
 };
