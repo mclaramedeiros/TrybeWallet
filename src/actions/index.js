@@ -11,7 +11,7 @@ export const endpointAPI = (currencies) => ({
   type: ENDPOINT_API,
   currencies,
 });
-export const SENDEXPENCES = (payload) => ({
+export const sentExpenses = (payload) => ({
   type: EXPENCES,
   payload,
 });
