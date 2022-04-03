@@ -13,14 +13,19 @@ class Wallet extends React.Component {
   render() {
     // const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     // const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
-    const { email } = this.props;
+    const { email, total } = this.props;
     return (
       <div>
         <header>
           <p data-testid="email-field">{email}</p>
-          <p data-testid="total-field">Total: 0</p>
+          <p data-testid="total-field">
+            Total:
+            {' '}
+            { total }
+          </p>
           <p data-testid="header-currency-field"> BRL </p>
         </header>
+        {/* <Form /> */}
         <Form />
         {/* <form>
           <label htmlFor="despesa">
@@ -111,7 +116,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   email: state.user.email,
   fetchCurrencies: state.wallet,
-  // currencies: state.wallet.currencies,
+  total: state.wallet.total,
 });
 
 Wallet.propTypes = {

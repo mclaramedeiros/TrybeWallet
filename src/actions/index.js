@@ -7,6 +7,7 @@ export const EXPENCES = 'EXPENCES';
 export const FAILEDREQUEST = 'FAILEDREQUEST';
 
 export const login = (email) => ({ type: LOGIN, email });
+
 export const endpointAPI = (currencies) => ({
   type: ENDPOINT_API,
   currencies,

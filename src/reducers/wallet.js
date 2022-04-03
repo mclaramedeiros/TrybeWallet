@@ -1,34 +1,34 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { ENDPOINT_API, sentExpenses } from '../actions';
+import { ENDPOINT_API, EXPENCES, FAILEDREQUEST } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
+  expenses: [],
+  error: '',
+  total: 0,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case ENDPOINT_API:
     return {
+      ...state,
       currencies: action.currencies,
     };
-  case sentExpenses:
+  case FAILEDREQUEST:
     return {
-      expences: [...state.expencies, action.expencies],
+      ...state,
+      error: action.error,
     };
-
+  case EXPENCES:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.payload],
+      total: state.total + parseInt(action.payload.value, 10),
+    };
   default:
     return state;
   }
 };
 
 export default wallet;
-
-// function wallet(state = WALLETS, action) {
-//   switch (action.type) {
-//   case WALLET:
-//     return { ...state,
-//       currencies: action.payload.currencies,
-//       apiExpenses: action.payload.expenses };
-//   case REQUEST_CURRENCY:
-//     return { ...state, isFetching: true };
-//   case GET_
