@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchApi, sentExpenses } from '../actions/index';
+import { fetchApi, sentExpenses, fetchCambio } from '../actions/index';
 // import Wallet from '../pages/Wallet';
 
 class Form extends React.Component {
@@ -14,12 +14,17 @@ class Form extends React.Component {
       value: '',
       tag: 'Alimentação',
       method: 'Dinheiro',
-      isButtonDisabled: true,
+      // isButtonDisabled: true,
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
+  // componentDidMount = () => {
+  //   const { fetchToCambio } = this.props;
+  //   fetchToCambio();
+  // }
 
   // handleChange = ({ target }) => {
   //   const { name, value } = target;
@@ -174,6 +179,7 @@ class Form extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   fetchToApi: () => dispatch(fetchApi()),
   sendExpenses: (objExpenses) => dispatch(sentExpenses(objExpenses)),
+  fetchToCambio: () => dispatch(fetchCambio()),
 });
 
 const mapStateToProps = (state) => ({
@@ -185,6 +191,7 @@ Form.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
   // value: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.any).isRequired,
+  sendExpenses: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -30,3 +30,15 @@ export const fetchApi = () => async (dispatch) => {
     dispatch(failedRequest(error));
   }
 };
+
+export const fetchCambio = (state) => async (dispatch) => {
+  try {
+    const url = 'https://economia.awesomeapi.com.br/json/all';
+    const result = await fetch(url);
+    const data = await result.json();
+    state.exchangeRates = data;
+    dispatch(sentExpenses(state));
+  } catch (error) {
+    dispatch(failedRequest(error));
+  }
+};

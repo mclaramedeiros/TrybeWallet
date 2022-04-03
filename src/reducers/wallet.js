@@ -24,7 +24,7 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
-      total: state.total + parseInt(action.payload.value, 10),
+      // total: state.total + parseInt(action.payload.value, 10),
     };
   default:
     return state;

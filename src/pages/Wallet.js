@@ -13,7 +13,9 @@ class Wallet extends React.Component {
   render() {
     // const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     // const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
-    const { email, total } = this.props;
+    const { email,
+      // total
+    } = this.props;
     return (
       <div>
         <header>
@@ -122,6 +124,7 @@ const mapStateToProps = (state) => ({
 Wallet.propTypes = {
   email: PropTypes.string.isRequired,
   fetchToApi: PropTypes.func.isRequired,
+  // total
   // currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
