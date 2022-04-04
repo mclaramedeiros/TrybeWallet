@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
-    const { currencies, expenses, onChange, onClick, value, description, currency, tag, method } = this.props;
+    const { currencies, expenses, onChange,
+      onClick, value, description, currency, tag, method } = this.props;
     const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const options = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
@@ -93,6 +94,13 @@ Form.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
   // value: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.any).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
 };
 
 export default Form;

@@ -30,7 +30,8 @@ class Wallet extends React.Component {
     let valuePusher = 0;
     const { keyValue } = this.props;
     keyValue.forEach((element) => {
-      valuePusher += Number(element.value) * Number(element.exchangeRates[element.currency].ask);
+      valuePusher += Number(element.value)
+      * Number(element.exchangeRates[element.currency].ask);
       return valuePusher;
     });
     return valuePusher.toFixed(2);
@@ -105,6 +106,8 @@ Wallet.propTypes = {
   email: PropTypes.string.isRequired,
   fetchToApi: PropTypes.func.isRequired,
   expensesDetails: PropTypes.func.isRequired,
+  fetchCurrencies: PropTypes.func.isRequired,
+  keyValue: PropTypes.func.isRequired,
   // total
   // currencies: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
