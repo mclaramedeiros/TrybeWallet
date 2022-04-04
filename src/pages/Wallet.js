@@ -11,10 +11,8 @@ class Wallet extends React.Component {
   }
 
   render() {
-    // const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
-    // const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const { email,
-      // total
+      total,
     } = this.props;
     return (
       <div>
@@ -27,85 +25,7 @@ class Wallet extends React.Component {
           </p>
           <p data-testid="header-currency-field"> BRL </p>
         </header>
-        {/* <Form /> */}
         <Form />
-        {/* <form>
-          <label htmlFor="despesa">
-            {' '}
-            Despesa
-            <input
-              type="text"
-              data-testid="value-input"
-              name="despesa"
-            />
-          </label>
-          Descrição da despesa
-          <label htmlFor="descrição">
-            <input
-              name="descrição"
-              data-testid="description-input"
-            />
-          </label>
-          <label htmlFor="currencies">
-            {' '}
-            Moeda
-            <select id="currencies">
-              { currencies.map((unit) => (
-                <option
-                  key={ unit }
-                  value={ unit }
-                  name={ unit }
-                >
-                  {unit}
-                </option>)) }
-            </select>
-          </label>
-
-          <select data-testid="method-input">
-            <option>Dinheiro</option>
-            <option>Cartão de crédito</option>
-            <option>Cartão de débito</option>
-          </select>
-
-          <select data-testid="tag-input">
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
-          </select> */}
-        {/* <select
-            data-testid="method-input"
-            { ...pay.map((payment) => (
-              <option
-                key={ payment }
-                name={ payment }
-                value={ payment }
-              >
-                {payment}
-              </option>
-            )) }
-          />
-          <select
-            data-testid="tag-input"
-            { ...tag.map((tagUnit) => (
-              <option
-                key={ tagUnit }
-                name={ tagUnit }
-                value={ tagUnit }
-              >
-                {tagUnit}
-              </option>
-            )) }
-          /> */}
-
-        {/* <button
-            type="submit"
-          >
-            Adicionar despesa
-          </button>
-
-        </form> */}
       </div>
     );
   }
@@ -118,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   email: state.user.email,
   fetchCurrencies: state.wallet,
-  total: state.wallet.total,
+  // total: state.wallet.,
 });
 
 Wallet.propTypes = {

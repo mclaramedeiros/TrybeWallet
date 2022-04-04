@@ -4,6 +4,7 @@
 export const ENDPOINT_API = 'API';
 export const LOGIN = 'LOGIN';
 export const EXPENCES = 'EXPENCES';
+export const PRICES = 'PRICES';
 export const FAILEDREQUEST = 'FAILEDREQUEST';
 
 export const login = (email) => ({ type: LOGIN, email });
@@ -12,9 +13,15 @@ export const endpointAPI = (currencies) => ({
   type: ENDPOINT_API,
   currencies,
 });
+
 export const sentExpenses = (payload) => ({
   type: EXPENCES,
   payload,
+});
+
+export const sentPrices = (prices) => ({
+  type: PRICES,
+  prices,
 });
 
 const failedRequest = (error) => ({ type: FAILEDREQUEST, error });
