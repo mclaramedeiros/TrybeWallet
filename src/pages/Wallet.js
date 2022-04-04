@@ -65,8 +65,8 @@ class Wallet extends React.Component {
   render() {
     const { email, fetchCurrencies, keyValue } = this.props;
     const allTheCategories = ['Descrição', 'Tag', 'Método de pagamento',
-    'Valor', 'Moeda', 'Câmbio utilizado',
-    'Valor convertido', 'Moeda de conversão', 'Editar/Excluir'];
+      'Valor', 'Moeda', 'Câmbio utilizado',
+      'Valor convertido', 'Moeda de conversão', 'Editar/Excluir'];
     const { value, description, currency, method, tag } = this.state;
     return (
       <div>
