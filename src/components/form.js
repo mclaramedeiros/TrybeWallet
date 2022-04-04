@@ -10,82 +10,99 @@ class Form extends React.Component {
     const pay = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const options = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <form action="">
-        <h2>{expenses}</h2>
-        <label htmlFor="value-input">
-          {' '}
-          Despesa
-          <input
-            type="number"
-            data-testid="value-input"
-            name="value"
-            id="value-input"
-            value={ value }
-            onChange={ onChange }
-          />
-        </label>
-        <label htmlFor="description">
-          <input
-            name="description"
-            data-testid="description-input"
-            value={ description }
-            onChange={ onChange }
-          />
-        </label>
-        <label htmlFor="moeda">
-          Moeda
+      <div>
+        <form action="">
+          <h2>{expenses}</h2>
+          <label htmlFor="value-input">
+            {' '}
+            Despesa
+            <input
+              type="number"
+              data-testid="value-input"
+              name="value"
+              id="value-input"
+              value={ value }
+              onChange={ onChange }
+            />
+          </label>
+          <label htmlFor="description">
+            <input
+              name="description"
+              data-testid="description-input"
+              value={ description }
+              onChange={ onChange }
+            />
+          </label>
+          <label htmlFor="moeda">
+            Moeda
+            <select
+              id="moeda"
+              name="currency"
+              value={ currency }
+              onChange={ onChange }
+            >
+              { currencies.map((unit) => (
+                <option
+                  key={ unit }
+                // data-testid={ currency }
+                >
+                  {unit}
+                </option>)) }
+            </select>
+          </label>
+
           <select
-            id="moeda"
-            name="currency"
-            value={ currency }
+            data-testid="method-input"
+            value={ method }
+            name="method"
             onChange={ onChange }
           >
-            { currencies.map((unit) => (
+            { pay.map((payment) => (
               <option
-                key={ unit }
-                // data-testid={ currency }
+                key={ payment }
               >
-                {unit}
-              </option>)) }
+                {payment}
+              </option>
+            )) }
           </select>
-        </label>
+          <select
+            data-testid="tag-input"
+            value={ tag }
+            name="tag"
+            onChange={ onChange }
+          >
+            { options.map((tagUnit) => (
+              <option
+                key={ tagUnit }
 
-        <select
-          data-testid="method-input"
-          value={ method }
-          name="method"
-          onChange={ onChange }
-        >
-          { pay.map((payment) => (
-            <option
-              key={ payment }
-            >
-              {payment}
-            </option>
-          )) }
-        </select>
-        <select
-          data-testid="tag-input"
-          value={ tag }
-          name="tag"
-          onChange={ onChange }
-        >
-          { options.map((tagUnit) => (
-            <option
-              key={ tagUnit }
-
-            >
-              {tagUnit}
-            </option>
-          )) }
-        </select>
-        <button
-          type="button"
-          onClick={ onClick }
-        >
-          Adicionar despesa
-        </button>
-      </form>
+              >
+                {tagUnit}
+              </option>
+            )) }
+          </select>
+          <button
+            type="button"
+            onClick={ onClick }
+          >
+            Adicionar despesa
+          </button>
+        </form>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Câmbio utilizado</th>
+              <th>Valor convertido</th>
+              <th>Moeda de conversão</th>
+              <th>Editar/Excluir</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
     );
   }
 }
